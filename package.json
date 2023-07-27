@@ -4,8 +4,8 @@
   "description": "Treinamento do curso do professor Rodrigo Manguinho, criação de uma API completa com Login, Cadastro, Criação de enquetes, listagem de enquetes, responder uma enquete e resultado da enquete, utilizando TDD, Clean Architecture, Design Patterns e SOLID",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "test:staged": "jest",
+    "test": "jest --passWithNoTests",
+    "test:staged": "jest --passWithNoTests",
     "prepare": "husky install"
   },
   "author": "Yasmin Lopes",
