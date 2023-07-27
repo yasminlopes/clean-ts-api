@@ -1,0 +1,11 @@
+{
+  "name": "clean-node-api",
+  "version": "1.0.0",
+  "description": "Treinamento do curso do professor Rodrigo Manguinho, criação de uma API completa com Login, Cadastro, Criação de enquetes, listagem de enquetes, responder uma enquete e resultado da enquete, utilizando TDD, Clean Architecture, Design Patterns e SOLID",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "author": "Yasmin Lopes",
+  "license": "ISC"
+}
