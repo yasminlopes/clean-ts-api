@@ -4,6 +4,7 @@
   "description": "Treinamento do curso do professor Rodrigo Manguinho, criação de uma API completa com Login, Cadastro, Criação de enquetes, listagem de enquetes, responder uma enquete e resultado da enquete, utilizando TDD, Clean Architecture, Design Patterns e SOLID",
   "main": "index.js",
   "scripts": {
+    "start": "sucrase-node src/main/server.ts",
     "test": "jest --passWithNoTests --silent --noStackTrace --runInBand",
     "test:verbose": "jest --passWithNoTests --runInBand",
     "test:unit": "npm test -- --watch -c jest-unit-config.js",
