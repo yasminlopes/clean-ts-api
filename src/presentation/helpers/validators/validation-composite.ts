@@ -1,14 +1,10 @@
 import { Validation } from './validation-helper'
 
 export class ValidationComposite implements Validation {
-  private readonly _validations: Validation[]
-
-  constructor (validations: Validation[]) {
-    this._validations = validations
-  }
+  constructor (private readonly validations: Validation[]) {}
 
   validate (input: any): Error {
-    for (const validation of this._validations) {
+    for (const validation of this.validations) {
       const error = validation.validate(input)
       if (error) {
         return error
