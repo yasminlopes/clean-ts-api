@@ -19,7 +19,7 @@ describe('Account Mongo Repository', () => {
     return new AccountMongoRepository()
   }
 
-  test('should return an account on success', async () => {
+  test('should return an account on add success', async () => {
     const sut = makeSut()
     const account = await sut.add({
       name: 'any_name',
