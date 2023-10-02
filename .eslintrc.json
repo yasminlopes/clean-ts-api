@@ -17,6 +17,7 @@
     "@typescript-eslint/prefer-nullish-coalescing": "off",
     "@typescript-eslint/prefer-optional-chain": "off",
     "@typescript-eslint/await-thenable": "off",
+    "n/no-path-concat": "off",
     "import/export": "off"
   }
 }
