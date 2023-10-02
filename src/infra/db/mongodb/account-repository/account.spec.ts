@@ -1,6 +1,8 @@
+import { Collection } from 'mongodb'
 import { MongoHelper } from '../../helpers/mongo-helper'
 import { AccountMongoRepository } from './account'
 
+let accountCollection: Collection
 describe('Account Mongo Repository', () => {
   beforeAll(async () => {
     await MongoHelper.connect(process.env.MONGO_URL)
@@ -54,5 +56,25 @@ describe('Account Mongo Repository', () => {
     const sut = makeSut()
     const account = await sut.loadByEmail('any_email@mail.com')
     expect(account).toBeFalsy()
+  })
+
+  test('should update the account accessToken on success', async () => {
+    const sut = makeSut()
+    accountCollection = await MongoHelper.getCollection('accounts')
+    const newAcc = await accountCollection.insertOne({
+      name: 'any_name',
+      email: 'any_email@mail.com',
+      password: 'any_password'
+    })
+    const fakeAccount = await accountCollection.findOne({
+      _id: newAcc.insertedId
+    })
+
+    expect(fakeAccount.accessToken).toBeFalsy()
+    await sut.updateAccessToken(fakeAccount._id.toString(), 'any_token')
+    const res = await accountCollection.findOne({ _id: fakeAccount._id })
+    const account = MongoHelper.map(res)
+    expect(account).toBeTruthy()
+    expect(account.accessToken).toBe('any_token')
   })
 })
