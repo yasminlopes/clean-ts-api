@@ -9,8 +9,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@master
+        uses: actions/checkout@v2
       - name: Update diagram
-        uses: githubocto/repo-visualizer@0.7.1
+        uses: githubocto/repo-visualizer@main
         with:
           excluded_paths: "ignore,.github"
+      - name: Commit and push diagram
+        run: |
+          git config --local user.name "GitHub Actions"
+          git config --local user.email "github-actions@github.com"
+          git add ./diagram.svg
+          git commit -m "docs: repo visualizer: updated diagram"
+          git push https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/yasminlopes/clean-ts-api.git HEAD:master
